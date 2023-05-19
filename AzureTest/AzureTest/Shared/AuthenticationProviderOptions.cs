@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AzureTest.Shared
 {
-    public static class AuthenticationProvider
+    public static class AuthenticationProviderOptions
     {
         public static string AzureAd = ".auth/login/aad";
     }

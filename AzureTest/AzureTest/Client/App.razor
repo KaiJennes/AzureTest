@@ -1,13 +1,12 @@
 ﻿@using AzureStaticWebApps.Blazor.Authentication;
 @using AzureTest.Shared
 @inherits BasePage
-<CascadingAuthenticationState>
+@*<CascadingAuthenticationState>
     <AuthorizeView>
         <Authorized>
             <Router AppAssembly="@typeof(App).Assembly">
                 <Found Context="routeData">
-                    @*<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-                    <FocusOnNavigate RouteData="@routeData" Selector="h1" />*@
+
                     <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
                 </Found>
                 <NotFound>
@@ -20,12 +19,25 @@
         </Authorized>
         <NotAuthorized>
             @{
-                NavManager.NavigateTo(AuthenticationProvider.AzureAd, true);
+                NavManager.NavigateTo("/counter", true);
             }
             ;
         </NotAuthorized>
     </AuthorizeView>
+</CascadingAuthenticationState>*@
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
 </CascadingAuthenticationState>
-
-
 
