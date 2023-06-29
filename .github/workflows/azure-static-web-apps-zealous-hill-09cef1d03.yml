@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
      environment: 
-      name: Maaß IT 
+    name: Maaß IT 
     steps:
       - uses: actions/checkout@v3
         with:
